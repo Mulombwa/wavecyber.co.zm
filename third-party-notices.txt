@@ -1,0 +1,29 @@
+Wave Cyber Security: third-party notices
+========================================
+
+This site contains the following third-party material.
+
+TYPEFACE
+  Wave Sans, a renamed and format-converted version of "Jones*" (Indestructible Type).
+  Licence: SIL Open Font License 1.1.
+  Full text and details: assets/fonts/LICENSE.md
+
+HERO PHOTOGRAPH (home page)
+  assets/img/hero/. "Media watches Soyuz rocket launch" by NASA (https://unsplash.com/@nasa),
+  Baikonur, Kazakhstan, published 1 March 2021.
+  Source: https://unsplash.com/photos/media-watches-soyuz-rocket-launch-aV1jRpSa-RI
+  Licence: Unsplash License (https://unsplash.com/license). Resized and converted to WebP and JPEG.
+
+VENDOR LOGOS
+  Artwork files: Simple Icons (CC0 1.0) and gilbarbara/logos (CC0 1.0); Imperva and Darktrace
+  logos supplied by Wave Cyber Security.
+  The logos are trademarks of their respective owners, shown only to identify vendors
+  Wave Cyber Security works with. No endorsement is implied.
+  Details: assets/img/partners/LICENSES.md
+
+JAVASCRIPT
+  None from third parties. The site runs only its own small scripts (menu and form handling).
+
+EVERYTHING ELSE
+  Text, layout, CSS and scripts in this site, the Wave Cyber Security name, logo and favicon:
+  Copyright Wave Cyber Security Limited. All rights reserved.

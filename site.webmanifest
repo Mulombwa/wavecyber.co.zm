@@ -1,0 +1,12 @@
+{
+  "name": "Wave Cyber Security",
+  "short_name": "Wave Cyber Security",
+  "description": "Cyber Security and Technology Services in Zambia.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#f8f7f5",
+  "theme_color": "#231f20",
+  "icons": [
+    { "src": "assets/img/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

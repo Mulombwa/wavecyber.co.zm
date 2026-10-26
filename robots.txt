@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wavecyber.co.zm/sitemap.xml

@@ -1,0 +1,91 @@
+# Wave Cyber Security: web server settings for cPanel (Apache or LiteSpeed).
+# If the site ever shows "500 Internal Server Error" after an edit here,
+# rename this file to htaccess.off in File Manager, then ask for help.
+
+# ---- Send everyone to https://wavecyber.co.zm (HTTPS, no www) ----
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # www.wavecyber.co.zm  ->  https://wavecyber.co.zm
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+  # http  ->  https
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ---- Clean addresses: /about instead of /about.html ----
+Options -MultiViews
+<IfModule mod_rewrite.c>
+  # /index.html -> /
+  RewriteCond %{THE_REQUEST} \s/+index\.html[\s?]
+  RewriteRule ^ / [L,R=301]
+  # /about.html -> /about
+  RewriteCond %{THE_REQUEST} \s/+([^\s?]+?)\.html[\s?]
+  RewriteRule ^ /%1 [L,R=301]
+  # /about is served from about.html
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^([^.]+)$ $1.html [L]
+</IfModule>
+
+# ---- Pages ----
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+Options -Indexes
+
+# Never serve hidden files (such as .htaccess itself)
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+# ---- File types ----
+<IfModule mod_mime.c>
+  AddType application/manifest+json .webmanifest
+  AddType font/woff2 .woff2
+  AddType image/webp .webp
+  AddDefaultCharset UTF-8
+</IfModule>
+
+# ---- Security headers ----
+# The site loads nothing from other companies, so the policy allows only itself.
+<IfModule mod_headers.c>
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+
+  # Caching: images and fonts for a year, scripts and styles for an hour, pages for five minutes
+  <FilesMatch "\.(woff2|svg|png|jpg|webp)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(js|css)$">
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=300"
+  </FilesMatch>
+</IfModule>
+
+# ---- Compression (smaller downloads) ----
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript text/javascript application/json application/manifest+json application/xml image/svg+xml
+</IfModule>
+
+# ---- Expiry dates (lets browsers keep files without asking again) ----
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 5 minutes"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType text/css "access plus 1 hour"
+  ExpiresByType application/javascript "access plus 1 hour"
+  ExpiresByType text/javascript "access plus 1 hour"
+  ExpiresByType text/html "access plus 5 minutes"
+</IfModule>

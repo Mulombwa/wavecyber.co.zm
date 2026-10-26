@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://wavecyber.co.zm/</loc><priority>1.0</priority></url>
+  <url><loc>https://wavecyber.co.zm/about</loc><priority>0.8</priority></url>
+  <url><loc>https://wavecyber.co.zm/services</loc><priority>0.8</priority></url>
+  <url><loc>https://wavecyber.co.zm/incident-response</loc><priority>0.8</priority></url>
+  <url><loc>https://wavecyber.co.zm/contact</loc><priority>0.7</priority></url>
+  <url><loc>https://wavecyber.co.zm/team</loc><priority>0.6</priority></url>
+  <url><loc>https://wavecyber.co.zm/partners</loc><priority>0.5</priority></url>
+  <url><loc>https://wavecyber.co.zm/privacy-policy</loc><priority>0.3</priority></url>
+  <url><loc>https://wavecyber.co.zm/terms</loc><priority>0.3</priority></url>
+  <url><loc>https://wavecyber.co.zm/cookie-policy</loc><priority>0.3</priority></url>
+</urlset>
